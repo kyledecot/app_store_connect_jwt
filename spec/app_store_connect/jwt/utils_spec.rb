@@ -10,6 +10,8 @@ RSpec.describe AppStoreConnect::JWT::Utils do
   end
 
   describe '.private_key' do
-    pending
+    it 'should return a OpenSSL::PKey::EC' do
+      expect(described_class.private_key(path: private_key_path)).to be_a(OpenSSL::PKey::EC)
+    end
   end
 end
