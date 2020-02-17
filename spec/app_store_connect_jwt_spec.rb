@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe AppStoreConnectJwt do
+RSpec.describe AppStoreConnect::JWT do
   it 'has a version number' do
-    expect(AppStoreConnectJwt::VERSION).not_to be nil
-  end
-
-  it 'does something useful' do
-    expect(false).to eq(true)
+    expect(AppStoreConnect::JWT::VERSION).not_to be nil
   end
 end

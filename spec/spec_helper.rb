@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'app_store_connect_jwt'
+require 'app_store_connect/jwt'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
