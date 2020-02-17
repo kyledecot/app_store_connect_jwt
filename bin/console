@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "pry"
+require "app_store_connect/jwt"
+
+Pry.start(AppStoreConnect::JWT)

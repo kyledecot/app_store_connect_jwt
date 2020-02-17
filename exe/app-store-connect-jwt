@@ -1,0 +1,6 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'app_store_connect/jwt/cli'
+
+exit AppStoreConnect::JWT::CLI.run(ARGV)
