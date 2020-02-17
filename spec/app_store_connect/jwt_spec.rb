@@ -34,7 +34,7 @@ RSpec.describe AppStoreConnect::JWT do
 
     subject(:token) { jwt.token }
 
-    let(:segments) { JWT.decode(token, OpenSSL::PKey.read(File.read(private_key_path)), true, algorithm: described_class::ALGORITHM) }
+    let(:segments) { described_class.decode(token: token, private_key_path: private_key_path) }
     let(:payload) { segments.first }
     let(:options) { segments.last }
 

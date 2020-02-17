@@ -35,7 +35,7 @@ module AppStoreConnect
     def initialize(issuer_id:, key_id:, private_key_path:)
       @issuer_id = issuer_id
       @key_id = key_id
-      @private_key = private_key_for(path: private_key_path)
+      @private_key = self.class.private_key_for(path: private_key_path)
     end
 
     # @return [Hash]
@@ -59,10 +59,9 @@ module AppStoreConnect
 
     alias to_s token
 
-    private
-
-    def private_key_for(path:)
+    def self.private_key_for(path:)
       OpenSSL::PKey.read(File.read(File.expand_path(path)))
     end
+    private_class_method :private_key_for
   end
 end
