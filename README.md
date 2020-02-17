@@ -54,6 +54,15 @@ puts AppStoreConnect::JWT.new(
 
 :information_desk_person: _Pro Tip: `#token` is aliased to `#to_s` so in this example the `.token` is superfolus!_
 
+#### Decoding
+
+```ruby
+AppStoreConnect::JWT.decode(
+  token: token,
+  private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
+)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
