@@ -4,11 +4,15 @@ require 'bundler/setup'
 require 'timecop'
 require 'simplecov'
 
+require_relative 'support/fixtures_helper'
+
 SimpleCov.start { add_filter('/spec/') }
 
 require 'app_store_connect/jwt'
 
 RSpec.configure do |config|
+  config.include(FixturesHelper)
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
 

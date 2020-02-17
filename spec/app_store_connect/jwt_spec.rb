@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe AppStoreConnect::JWT do
-  let(:private_key_path) { File.expand_path(File.join(__dir__, '../support/fixtures/private_key.p8')) }
-  let(:key_id) { 'M3225B466N' }
-  let(:issuer_id) { '69a6de70-03db-47e3-e053-5b8c7c11a4d1' }
-
-  subject(:authorization) do
+  subject(:jwt) do
     described_class.new(
       issuer_id: issuer_id,
       key_id: key_id,
@@ -21,7 +17,7 @@ RSpec.describe AppStoreConnect::JWT do
     end
 
     it 'should return a hash' do
-      expect(authorization.payload).to eq(
+      expect(jwt.payload).to eq(
         aud: described_class::AUDIENCE,
         exp: 1_546_302_000,
         iss: issuer_id
@@ -36,7 +32,7 @@ RSpec.describe AppStoreConnect::JWT do
       end
     end
 
-    subject(:token) { authorization.token }
+    subject(:token) { jwt.token }
 
     let(:segments) { JWT.decode(token, OpenSSL::PKey.read(File.read(private_key_path)), true, algorithm: described_class::ALGORITHM) }
     let(:payload) { segments.first }
@@ -58,7 +54,7 @@ RSpec.describe AppStoreConnect::JWT do
 
   describe '#to_s' do
     it 'should be aliased to #token' do
-      expect(authorization.method(:to_s)).to eq(authorization.method(:token))
+      expect(jwt.method(:to_s)).to eq(jwt.method(:token))
     end
   end
 end
