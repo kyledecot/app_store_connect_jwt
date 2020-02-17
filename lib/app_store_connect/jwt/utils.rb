@@ -21,6 +21,12 @@ module AppStoreConnect
       def self.decode(token, private_key, algorithm)
         ::JWT.decode(token, private_key, true, algorithm: algorithm)
       end
+
+      # @param path [String]
+      # @return [OpenSSL::PKey::EC]
+      def self.private_key(path:)
+        OpenSSL::PKey.read(File.read(File.expand_path(path)))
+      end
     end
   end
 end

@@ -8,4 +8,8 @@ RSpec.describe AppStoreConnect::JWT::Utils do
   describe '.decode' do
     pending
   end
+
+  describe '.private_key' do
+    pending
+  end
 end
