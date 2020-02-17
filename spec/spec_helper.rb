@@ -2,6 +2,7 @@
 
 require 'bundler/setup'
 require 'app_store_connect/jwt'
+require 'timecop'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
