@@ -26,10 +26,20 @@ Or install it yourself as:
 
 ### CLI 
 
+#### Encoding 
+
 ```sh
-$ app-store-connect-jwt generate \
+$ app-store-connect-jwt encode \
     --issuer-id=$APP_STORE_CONNECT_ISSUER_ID \
     --key-id=$APP_STORE_CONNECT_KEY_ID \
+    --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
+```
+
+#### Decoding
+
+```sh
+$ app-store-connect-jwt decode \
+    --token="..." \
     --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
 ```
 
@@ -38,21 +48,21 @@ $ app-store-connect-jwt generate \
 #### cURL 
 
 ```sh
-$ curl -H "Authorization: Bearer $(app-store-connect-jwt generate)" \
+$ curl -H "Authorization: Bearer $(app-store-connect-jwt encode)" \
     https://api.appstoreconnect.apple.com/v1/apps
 ```
 
 ### Ruby
 
+#### Encoding
+
 ```ruby 
-puts AppStoreConnect::JWT.new(
+puts AppStoreConnect::JWT.encode(
   issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
   key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
   private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
-).token
+)
 ```
-
-:information_desk_person: _Pro Tip: `#token` is aliased to `#to_s` so in this example the `.token` is superfolus!_
 
 #### Decoding
 
