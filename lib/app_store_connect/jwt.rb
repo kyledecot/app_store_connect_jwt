@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'jwt'
+require 'app_store_connect/jwt/utils'
 require 'app_store_connect/jwt/version'
 
 module AppStoreConnect
@@ -45,7 +45,7 @@ module AppStoreConnect
 
     # @return [String]
     def token
-      ::JWT.encode(payload, private_key, ALGORITHM, header_fields)
+      Utils.encode(payload, private_key, ALGORITHM, header_fields)
     end
 
     alias to_s token
