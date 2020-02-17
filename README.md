@@ -28,9 +28,9 @@ Or install it yourself as:
 
 ```sh
 $ app-store-connect-jwt generate \
-  --issuer-id=$APP_STORE_CONNECT_ISSUER_ID \
-  --key-id=$APP_STORE_CONNECT_KEY_ID \
-  --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
+    --issuer-id=$APP_STORE_CONNECT_ISSUER_ID \
+    --key-id=$APP_STORE_CONNECT_KEY_ID \
+    --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
 ```
 
 _Pro Tip: if you have the environment variables set that are listed above you can omit the flags entirely and the CLI will automatically pick up on them, thus making the command `app-store-connect-jwt generate`!_
@@ -39,7 +39,7 @@ _Pro Tip: if you have the environment variables set that are listed above you ca
 
 ```sh
 $ curl -H "Authorization: Bearer $(app-store-connect-jwt generate)" \
-  https://api.appstoreconnect.apple.com/v1/apps
+    https://api.appstoreconnect.apple.com/v1/apps
 ```
 
 ### Ruby
