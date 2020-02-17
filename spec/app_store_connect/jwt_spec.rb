@@ -29,14 +29,14 @@ RSpec.describe AppStoreConnect::JWT do
     end
   end
 
-  describe '#to_s' do
+  describe '#token' do
     around do |example|
       Timecop.freeze(Time.parse('2019-01-01 00:00:00 UTC')) do
         example.call
       end
     end
 
-    subject(:token) { authorization.to_s }
+    subject(:token) { authorization.token }
 
     let(:segments) { JWT.decode(token, OpenSSL::PKey.read(File.read(private_key_path)), true, algorithm: described_class::ALGORITHM) }
     let(:payload) { segments.first }
@@ -53,6 +53,12 @@ RSpec.describe AppStoreConnect::JWT do
         'exp' => 1_546_302_000,
         'iss' => issuer_id
       )
+    end
+  end
+
+  describe '#to_s' do
+    it 'should be aliased to #token' do
+      expect(authorization.method(:to_s)).to eq(authorization.method(:token))
     end
   end
 end

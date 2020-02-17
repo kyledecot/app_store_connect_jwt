@@ -38,6 +38,6 @@ module AppStoreConnect
       ::JWT.encode(payload, private_key, ALGORITHM, header_fields)
     end
 
-    alias :to_s :token
+    alias to_s token
   end
 end
