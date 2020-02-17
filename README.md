@@ -31,6 +31,8 @@ app-store-connect-jwt generate \
   --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
 ```
 
+_Pro Tip: if you have the environment variables set that are listed above you can omit the flags entirely and the CLI will automatically pick up on them!_
+
 ### Ruby
 
 ```ruby 
