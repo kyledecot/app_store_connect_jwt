@@ -8,17 +8,20 @@ module AppStoreConnect
     AUDIENCE = 'appstoreconnect-v1'
     ALGORITHM = 'ES256'
 
-    # App Store Connect API Issuer ID
-    # @return [String]
-    attr_reader :issuer_id
+    # @param issuer_id [String] App Store Connect API Issuer ID
+    # @param key_id [String] App Store Connect API Key ID
+    # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
+    def self.encode(issuer_id:, key_id:, private_key_path:)
+      payload = {
+        exp: Time.now.to_i + 20 * 60,
+        iss: issuer_id,
+        aud: AUDIENCE
+      }
+      header_fields = { kid: key_id }
+      private_key = Utils.private_key(path: private_key_path)
 
-    # App Store Connect API Key ID
-    # @return [String]
-    attr_reader :key_id
-
-    # App Store Connect API Private Key
-    # @return [OpenSSL::PKey::EC]
-    attr_reader :private_key
+      Utils.encode(payload, private_key, ALGORITHM, header_fields)
+    end
 
     # @param token [String]
     # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
@@ -28,35 +31,5 @@ module AppStoreConnect
 
       Utils.decode(token, private_key, ALGORITHM)
     end
-
-    # @param issuer_id [String] App Store Connect API Issuer ID
-    # @param key_id [String] App Store Connect API Key ID
-    # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
-    def initialize(issuer_id:, key_id:, private_key_path:)
-      @issuer_id = issuer_id
-      @key_id = key_id
-      @private_key = Utils.private_key(path: private_key_path)
-    end
-
-    # @return [Hash]
-    def payload
-      {
-        exp: Time.now.to_i + 20 * 60,
-        iss: issuer_id,
-        aud: AUDIENCE
-      }
-    end
-
-    # @return [Hash]
-    def header_fields
-      { kid: key_id }
-    end
-
-    # @return [String]
-    def token
-      Utils.encode(payload, private_key, ALGORITHM, header_fields)
-    end
-
-    alias to_s token
   end
 end
