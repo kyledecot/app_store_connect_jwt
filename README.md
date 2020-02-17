@@ -43,7 +43,7 @@ puts AppStoreConnect::JWT.new(
 ).token
 ```
 
-__Pro Tip: `#token` is aliased to `#to___s so in this example the `.token` is superfolus! 
+_Pro Tip: `#token` is aliased to `#to_s` so in this example the `.token` is superfolus!_
 
 ## Development
 
