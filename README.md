@@ -40,8 +40,10 @@ puts AppStoreConnect::JWT.new(
   issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
   key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
   private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
-)
+).token
 ```
+
+__Pro Tip: `#token` is aliased to `#to___s so in this example the `.token` is superfolus! 
 
 ## Development
 

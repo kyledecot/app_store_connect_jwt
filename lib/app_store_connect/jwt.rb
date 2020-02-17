@@ -10,12 +10,16 @@ module AppStoreConnect
 
     attr_reader :issuer_id, :key_id, :private_key
 
+    # @param issuer_id [String]
+    # @param key_id [String]
+    # @param private_key_path [String]
     def initialize(issuer_id:, key_id:, private_key_path:)
       @issuer_id = issuer_id
       @key_id = key_id
       @private_key = OpenSSL::PKey.read(File.read(File.expand_path(private_key_path)))
     end
 
+    # @return [Hash]
     def payload
       {
         exp: Time.now.to_i + 20 * 60,
@@ -24,12 +28,16 @@ module AppStoreConnect
       }
     end
 
+    # @return [Hash]
     def header_fields
       { kid: key_id }
     end
 
-    def to_s
+    # @return [String]
+    def token
       ::JWT.encode(payload, private_key, ALGORITHM, header_fields)
     end
+
+    alias :to_s :token
   end
 end
