@@ -8,11 +8,21 @@ module AppStoreConnect
     AUDIENCE = 'appstoreconnect-v1'
     ALGORITHM = 'ES256'
 
-    attr_reader :issuer_id, :key_id, :private_key
+    # App Store Connect API Issuer ID
+    # @return [String]
+    attr_reader :issuer_id
 
-    # @param issuer_id [String]
-    # @param key_id [String]
-    # @param private_key_path [String]
+    # App Store Connect API Key ID
+    # @return [String]
+    attr_reader :key_id
+
+    # App Store Connect API Private Key
+    # @return [OpenSSL::PKey::EC]
+    attr_reader :private_key
+
+    # @param issuer_id [String] App Store Connect API Issuer ID
+    # @param key_id [String] App Store Connect API Key ID
+    # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
     def initialize(issuer_id:, key_id:, private_key_path:)
       @issuer_id = issuer_id
       @key_id = key_id
