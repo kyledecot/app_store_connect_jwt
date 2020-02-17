@@ -27,7 +27,7 @@ Or install it yourself as:
 ### CLI 
 
 ```sh
-app-store-connect-jwt generate \
+$ app-store-connect-jwt generate \
   --issuer-id=$APP_STORE_CONNECT_ISSUER_ID \
   --key-id=$APP_STORE_CONNECT_KEY_ID \
   --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
@@ -38,7 +38,7 @@ _Pro Tip: if you have the environment variables set that are listed above you ca
 #### cURL 
 
 ```sh
-curl -H "Authorization: Bearer $(app-store-connect-jwt generate)" \
+$ curl -H "Authorization: Bearer $(app-store-connect-jwt generate)" \
   https://api.appstoreconnect.apple.com/v1/apps
 ```
 
