@@ -35,6 +35,8 @@ $ app-store-connect-jwt encode \
     --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
 ```
 
+:information_desk_person: _Pro Tip: if you have the environment variables set that are listed above you can omit the flags entirely and the CLI will automatically pick up on them, thus making the command `app-store-connect-jwt encode`!_
+
 #### Decoding
 
 ```sh
@@ -42,8 +44,6 @@ $ app-store-connect-jwt decode \
     --token="..." \
     --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
 ```
-
-:information_desk_person: _Pro Tip: if you have the environment variables set that are listed above you can omit the flags entirely and the CLI will automatically pick up on them, thus making the command `app-store-connect-jwt generate`!_
 
 #### cURL 
 
