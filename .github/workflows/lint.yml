@@ -1,0 +1,39 @@
+---
+name: Lint
+
+on:
+  push:
+
+jobs:
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+      - name: Install
+        run: |
+          pip install --user --no-warn-script-location yamllint
+      - name: Run
+        run: /home/runner/.local/bin/yamllint .
+
+  rubocop:
+    name: rubocop
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs=3 --retry=3
+      - name: Run rubocop
+        run: bundle exec rubocop -P -fq
