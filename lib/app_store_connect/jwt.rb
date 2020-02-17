@@ -29,6 +29,13 @@ module AppStoreConnect
       Utils.decode(token, private_key, ALGORITHM)
     end
 
+    # @param path [String]
+    # @return [OpenSSL::PKey::EC]
+    def self.private_key_for(path:)
+      OpenSSL::PKey.read(File.read(File.expand_path(path)))
+    end
+    private_class_method :private_key_for
+
     # @param issuer_id [String] App Store Connect API Issuer ID
     # @param key_id [String] App Store Connect API Key ID
     # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
@@ -58,10 +65,5 @@ module AppStoreConnect
     end
 
     alias to_s token
-
-    def self.private_key_for(path:)
-      OpenSSL::PKey.read(File.read(File.expand_path(path)))
-    end
-    private_class_method :private_key_for
   end
 end

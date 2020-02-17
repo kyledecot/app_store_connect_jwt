@@ -17,6 +17,7 @@ module AppStoreConnect
       # @param token [String]
       # @param private_key [OpenSSL::PKey::EC]
       # @param algorithm [String]
+      # @return [Array<Hash>]
       def self.decode(token, private_key, algorithm)
         ::JWT.decode(token, private_key, true, algorithm: algorithm)
       end
