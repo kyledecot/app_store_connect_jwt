@@ -57,7 +57,7 @@ $ curl -H "Authorization: Bearer $(app-store-connect-jwt encode)" \
 #### Encoding
 
 ```ruby 
-puts AppStoreConnect::JWT.encode(
+AppStoreConnect::JWT.encode(
   issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
   key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
   private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
