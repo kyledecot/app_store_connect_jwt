@@ -2,7 +2,9 @@
 
 ![Test](https://github.com/kyledecot/app_store_connect_jwt/workflows/Test/badge.svg) [![Gem Version](https://badge.fury.io/rb/app_store_connect_jwt.svg)](https://badge.fury.io/rb/app_store_connect_jwt) [![Maintainability](https://api.codeclimate.com/v1/badges/e13c94f97898e74f34a9/maintainability)](https://codeclimate.com/github/kyledecot/hard_cider/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/e13c94f97898e74f34a9/test_coverage)](https://codeclimate.com/github/kyledecot/hard_cider/test_coverage)
 
-Generate App Store Connect API JWT (JSON Web Token) 
+Generate App Store Connect API JWT (JSON Web Token) according to the Apple's App Store Connect Api Documentation:
+
+https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests
 
 ## Installation
 
