@@ -1,5 +1,7 @@
 # App Store Connect–JWT
 
+![Test](https://github.com/kyledecot/app_store_connect_jwt/workflows/Test/badge.svg)
+
 Generate App Store Connect API JWT (JSON Web Token) 
 
 ## Installation
