@@ -10,17 +10,17 @@
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 #
 ---
-Metrics/MethodLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/BlockLength:
   Enabled: false
 
-Style/Documentation:
-  Enabled: false
-
-Layout/LineLength:
-  Enabled: false
-
 Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
