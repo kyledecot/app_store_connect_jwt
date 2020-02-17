@@ -20,8 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
+### CLI 
+
+```sh
+app-store-connect-jwt generate \
+	--issuer-id=$APP_STORE_CONNECT_ISSUER_ID \
+  --key-id=$APP_STORE_CONNECT_KEY_ID \
+  --private-key-path=$APP_STORE_CONNECT_PRIVATE_KEY_PATH
 ```
-app-store-connect-jwt generate
+
+### Ruby
+
+```ruby 
+puts AppStoreConnect::JWT.new(
+	issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
+  key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
+	private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
+)
 ```
 
 ## Development
