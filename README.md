@@ -1,4 +1,4 @@
-# AppStoreConnect::JWT
+# App Store Connect–JWT
 
 Generate App Store Connect API JWT (JSON Web Token) 
 
