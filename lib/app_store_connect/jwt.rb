@@ -11,6 +11,7 @@ module AppStoreConnect
     # @param issuer_id [String] App Store Connect API Issuer ID
     # @param key_id [String] App Store Connect API Key ID
     # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
+    # @return [String]
     def self.encode(issuer_id:, key_id:, private_key_path:)
       payload = Utils.payload(issuer_id, AUDIENCE)
       header_fields = Utils.header_fields(key_id)
