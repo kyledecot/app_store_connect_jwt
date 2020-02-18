@@ -12,13 +12,9 @@ module AppStoreConnect
     # @param key_id [String] App Store Connect API Key ID
     # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
     def self.encode(issuer_id:, key_id:, private_key_path:)
-      payload = {
-        exp: Time.now.to_i + 20 * 60,
-        iss: issuer_id,
-        aud: AUDIENCE
-      }
-      header_fields = { kid: key_id }
-      private_key = Utils.private_key(path: private_key_path)
+      payload = Utils.payload(issuer_id, AUDIENCE)
+      header_fields = Utils.header_fields(key_id)
+      private_key = Utils.private_key(private_key_path)
 
       Utils.encode(payload, private_key, ALGORITHM, header_fields)
     end
@@ -27,7 +23,7 @@ module AppStoreConnect
     # @param private_key_path [String] Path to App Store Connect API Private Key (.p8)
     # @return [Array<Hash>]
     def self.decode(token:, private_key_path:)
-      private_key = Utils.private_key(path: private_key_path)
+      private_key = Utils.private_key(private_key_path)
 
       Utils.decode(token, private_key, ALGORITHM)
     end

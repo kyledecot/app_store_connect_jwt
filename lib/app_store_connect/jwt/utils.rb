@@ -23,9 +23,26 @@ module AppStoreConnect
         ::JWT.decode(token, private_key, true, algorithm: algorithm)
       end
 
+      # @param key_id [String]
+      # @return [Hash]
+      def self.header_fields(key_id)
+        { kid: key_id }
+      end
+
+      # @param issuer_id [String]
+      # @paraam audience [String]
+      # @return [Hash]
+      def self.payload(issuer_id, audience)
+        {
+          exp: Time.now.to_i + 20 * 60,
+          iss: issuer_id,
+          aud: audience
+        }
+      end
+
       # @param path [String]
       # @return [OpenSSL::PKey::EC]
-      def self.private_key(path:)
+      def self.private_key(path)
         OpenSSL::PKey.read(File.read(File.expand_path(path)))
       end
     end
