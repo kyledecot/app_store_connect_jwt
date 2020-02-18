@@ -30,7 +30,7 @@ module AppStoreConnect
       end
 
       # @param issuer_id [String]
-      # @paraam audience [String]
+      # @param audience [String]
       # @return [Hash]
       def self.payload(issuer_id, audience)
         {
