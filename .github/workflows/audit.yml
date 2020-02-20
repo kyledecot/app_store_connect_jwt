@@ -13,12 +13,10 @@ jobs:
       - uses: actions/checkout@master
       - name: Set up Haskell
         uses: actions/setup-haskell@v1
-        with:
-          ghc-version: '8.2.2'
-          cabal-version: '2.0'
       - name: install
         run: |
-          stack install unused
+          cabal update
+          cabal install unused
       - name: run
         run: |
           git ls-files | xargs ctags && unused
