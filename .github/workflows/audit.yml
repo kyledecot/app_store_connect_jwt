@@ -15,6 +15,7 @@ jobs:
         uses: actions/setup-haskell@v1
       - name: install
         run: |
+          apt-get install ctags
           cabal update
           cabal install unused
       - name: run
