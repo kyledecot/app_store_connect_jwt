@@ -10,12 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install ctags
+        run: sudo apt-get install ctags
       - uses: actions/checkout@master
       - name: Set up Haskell
         uses: actions/setup-haskell@v1
       - name: install
         run: |
-          apt-get install ctags
           cabal update
           cabal install unused
       - name: run
