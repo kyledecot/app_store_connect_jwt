@@ -14,8 +14,8 @@ jobs:
       - name: Set up Haskell
         uses: actions/setup-haskell@v1
         with:
-          ghc-version: '8.6.5'
-          cabal-version: '2.4'
+          ghc-version: '8.2.2'
+          cabal-version: '2.0'
       - name: install
         run: |
           stack install unused
