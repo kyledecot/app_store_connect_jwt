@@ -77,7 +77,7 @@ puts AppStoreConnect::JWT.decode(
 )
 ```
 
-#### Net/HTTP
+#### Net::HTTP
 
 ```ruby
 require 'app_store_connect/jwt'
