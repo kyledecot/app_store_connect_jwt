@@ -57,7 +57,9 @@ $ curl -H "Authorization: Bearer $(app-store-connect-jwt encode)" \
 #### Encoding
 
 ```ruby 
-AppStoreConnect::JWT.encode(
+require 'app_store_connect/jwt'
+
+puts AppStoreConnect::JWT.encode(
   issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
   key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
   private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
@@ -67,10 +69,35 @@ AppStoreConnect::JWT.encode(
 #### Decoding
 
 ```ruby
-AppStoreConnect::JWT.decode(
+require 'app_store_connect/jwt'
+
+puts AppStoreConnect::JWT.decode(
   token: token,
   private_key_path: ENV["APP_STORE_CONNECT_PRIVATE_KEY_PATH"]
 )
+```
+
+#### Net/HTTP
+
+```ruby
+require 'app_store_connect/jwt'
+require 'net/http'
+
+uri = URI('https://api.appstoreconnect.apple.com/v1/apps')
+jwt = AppStoreConnect::JWT.encode(
+  issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+  key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
+  private_key_path: ENV['APP_STORE_CONNECT_PRIVATE_KEY_PATH']
+)
+
+request = Net::HTTP::Get.new(uri)
+request['Authorization'] = "Bearer #{jwt}"
+
+response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+  http.request(request)
+end
+
+puts response.body
 ```
 
 ## Development
