@@ -7,7 +7,7 @@ require 'app_store_connect/jwt/version'
 OPTIONS = {
   hosts: [],
   version: AppStoreConnect::JWT::VERSION
-}
+}.freeze
 
 HOSTS = {
   rubygems: 'https://rubygems.org',
@@ -19,15 +19,6 @@ OptionParser.new do |parser|
     parser.on("--#{key}") do
       OPTIONS[:hosts] << key
     end
-  end
-
-  parser.on('--version VERSION') do |version|
-    OPTIONS[:version] = version
-  end
-
-  parser.on('--help', '-h') do
-    puts parser
-    exit(0)
   end
 end.parse!
 
