@@ -3,9 +3,6 @@
 RSpec.describe AppStoreConnect::JWT do
   describe '.encode' do
     around do |example|
-      Timecop.freeze(Time.parse('2019-01-01 00:00:00 UTC')) do
-        example.call
-      end
     end
 
     subject(:token) { described_class.encode(key_id: key_id, issuer_id: issuer_id, private_key_path: private_key_path) }

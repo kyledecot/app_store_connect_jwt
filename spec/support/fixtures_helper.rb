@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module FixturesHelper
+  def jwt
+    File.read(File.expand_path(File.join('fixtures', 'jwt'), __dir__))
+  end
+
   def private_key_path
     File.expand_path(File.join('fixtures', 'private_key.p8'), __dir__)
   end

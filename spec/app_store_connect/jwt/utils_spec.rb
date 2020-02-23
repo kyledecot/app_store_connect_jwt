@@ -6,7 +6,19 @@ RSpec.describe AppStoreConnect::JWT::Utils do
   end
 
   describe '.decode' do
-    pending
+    it 'should return an array' do
+      expected = [
+        { 'exp' => 1_582_475_045, 'iss' => issuer_id, 'aud' => AppStoreConnect::JWT::AUDIENCE },
+        { 'kid' => 'M3225B466N', 'alg' => AppStoreConnect::JWT::ALGORITHM }
+      ]
+      actual = described_class.decode(
+        jwt,
+        described_class.private_key(private_key_path),
+        AppStoreConnect::JWT::ALGORITHM
+      )
+
+      expect(actual).to match_array(expected)
+    end
   end
 
   describe '.private_key' do

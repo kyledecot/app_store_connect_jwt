@@ -22,4 +22,10 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.around(:each) do |example|
+    Timecop.freeze(Time.parse('2019-01-01 00:00:00 UTC')) do
+      example.call
+    end
+  end
 end
