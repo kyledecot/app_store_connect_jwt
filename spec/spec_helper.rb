@@ -3,6 +3,7 @@
 require 'bundler/setup'
 require 'timecop'
 require 'simplecov'
+require 'pry'
 
 require_relative 'support/fixtures_helper'
 
