@@ -1,28 +1,34 @@
 # frozen_string_literal: true
 
 RSpec.describe AppStoreConnect::JWT do
+  let(:algorithm) { described_class::ALGORITHM }
+  let(:audience) { described_class::AUDIENCE }
+  let(:private_key) { described_class::Utils.private_key(private_key_path) }
+
   describe '.encode' do
-    around do |example|
-    end
+    let(:header_fields) { described_class::Utils.header_fields(key_id) }
+    let(:payload) { { aud: audience, exp: 1_546_302_000, iss: issuer_id } }
 
-    subject(:token) { described_class.encode(key_id: key_id, issuer_id: issuer_id, private_key_path: private_key_path) }
+    it 'should delegate' do
+      expect(described_class::Utils)
+        .to receive(:encode)
+        .with(payload, instance_of(OpenSSL::PKey::EC), algorithm, header_fields)
 
-    it 'should return a decodable JSON web token' do
-      payload, options = described_class.decode(
-        token: token,
+      described_class.encode(
+        issuer_id: issuer_id,
+        key_id: key_id,
         private_key_path: private_key_path
       )
+    end
+  end
 
-      expect(options).to eq(
-        'alg' => described_class::ALGORITHM,
-        'kid' => key_id
-      )
+  describe '.decode' do
+    it 'should delegate' do
+      expect(described_class::Utils)
+        .to receive(:decode)
+        .with(jwt, instance_of(OpenSSL::PKey::EC), algorithm)
 
-      expect(payload).to eq(
-        'aud' => described_class::AUDIENCE,
-        'exp' => 1_546_302_000,
-        'iss' => issuer_id
-      )
+      described_class.decode(token: jwt, private_key_path: private_key_path)
     end
   end
 end

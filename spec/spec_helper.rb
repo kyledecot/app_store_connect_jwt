@@ -10,6 +10,7 @@ require_relative 'support/fixtures_helper'
 SimpleCov.start { add_filter('/spec/') }
 
 require 'app_store_connect/jwt'
+require 'app_store_connect/jwt/cli'
 
 RSpec.configure do |config|
   config.include(FixturesHelper)
