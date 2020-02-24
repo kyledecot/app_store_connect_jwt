@@ -2,7 +2,7 @@
 
 ![Test](https://github.com/kyledecot/app_store_connect_jwt/workflows/Test/badge.svg) ![Lint](https://github.com/kyledecot/app_store_connect_jwt/workflows/Lint/badge.svg) [![Gem Version](https://badge.fury.io/rb/app_store_connect_jwt.svg)](https://badge.fury.io/rb/app_store_connect_jwt) [![Maintainability](https://api.codeclimate.com/v1/badges/e13c94f97898e74f34a9/maintainability)](https://codeclimate.com/github/kyledecot/app_store_connect_jwt/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/e13c94f97898e74f34a9/test_coverage)](https://codeclimate.com/github/kyledecot/app_store_connect_jwt/test_coverage)
 
-Generate App Store Connect API JWT (JSON Web Token) according to Apple's App Store Connect API Documentation:
+Encode & decode App Store Connect API JWTs (JSON Web Tokens) according to Apple's App Store Connect API Documentation:
 
 https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests
 
