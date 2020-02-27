@@ -11,7 +11,7 @@ https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_f
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'app_store_connect_jwt'
+gem 'app_store_connect_jwt', require: 'app_store_connect/jwt'
 ```
 
 And then execute:
