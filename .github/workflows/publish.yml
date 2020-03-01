@@ -31,6 +31,7 @@ jobs:
 
       - name: Build Gem
         run: bundle exec rake build
+
       - name: Publish to RubyGems
         run: bundle exec rake push[rubygems]
 
