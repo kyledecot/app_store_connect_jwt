@@ -2,17 +2,17 @@
 
 require 'app_store_connect/jwt/version'
 
-HOSTS_BY_KEY = {
-  rubygems: 'https://rubygems.org',
-  github: 'https://rubygems.pkg.github.com/kyledecot'
-}.freeze
+version = AppStoreConnect::JWT::VERSION
 
-desc "Push app_store_connect_jwt-#{AppStoreConnect::JWT::VERSION}.gem"
+desc "Push app_store_connect_jwt-#{version}.gem"
 task :push, [:key] do |_task, args|
   args.with_defaults(key: 'rubygems')
 
-  key = args.key
-  host = HOSTS_BY_KEY.fetch(args.key.to_sym)
+  key = args.key.to_sym
+  host = {
+    rubygems: 'https://rubygems.org',
+    github: 'https://rubygems.pkg.github.com/kyledecot'
+  }.fetch(key)
 
-  sh %(gem push --key=#{key} --host=#{host} app_store_connect_jwt-#{AppStoreConnect::JWT::VERSION}.gem)
+  sh %(gem push --key=#{key} --host=#{host} app_store_connect_jwt-#{version}.gem)
 end
