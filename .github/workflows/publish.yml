@@ -30,10 +30,9 @@ jobs:
           GITHUB_PACKAGE_REPOSITORY_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGE_REPOSITORY_AUTH_TOKEN}}
 
       - name: Build Gem
-        run: |
-          gem build *.gemspec
+        run: bundle exec rake build
       - name: Publish to RubyGems
-        run: bundle exec ./bin/publish --rubygems
+        run: bundle exec rake push[rubygems]
 
       - name: Publish to Github Package Repository
-        run: bundle exec ./bin/publish --github
+        run: bundle exec rake push[github]
