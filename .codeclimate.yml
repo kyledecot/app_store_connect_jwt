@@ -1,3 +1,6 @@
 ---
 exclude_patterns:
   - "docs/"
+plugins:
+  rubocop: 
+    enabled: true
