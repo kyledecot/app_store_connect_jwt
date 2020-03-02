@@ -13,4 +13,5 @@
 # MacOS
 .DS_Store
 
+# gem artifacts
 *.gem
