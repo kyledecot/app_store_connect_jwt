@@ -3,9 +3,8 @@ name: Lint
 
 on:
   push:
-    tags:
-      paths-ignore:
-        - v*
+    tags-ignore:
+      - v*
 
 jobs:
   yamllint:
