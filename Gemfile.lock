@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    app_store_connect_jwt (0.8.0)
+    app_store_connect_jwt (0.9.0)
       gli (~> 2.19)
       jwt (~> 2.2)
 
