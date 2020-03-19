@@ -25,20 +25,20 @@ gem 'app_store_connect_jwt',
 And then execute:
 
 ```sh
-$ bundle
+bundle
 ```
 
 ### RubyGems
 
 ```sh
-$ gem install app_store_connect_jwt
+gem install app_store_connect_jwt
 ```
 
 ### Homebrew
 
 ```
-$ brew tap kyledecot/tap
-$ brew install app_store_connect_jwt
+brew tap kyledecot/tap
+brew install app_store_connect_jwt
 ```
 
 ## Usage
