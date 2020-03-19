@@ -13,7 +13,7 @@ Encode & decode App Store Connect API JWTs
 
 ## Installation
 
-### Bundler 
+### Bundler
 
 Add this line to your application's Gemfile:
 
