@@ -30,8 +30,6 @@ $ bundle
 
 ### RubyGems
 
-Or install it yourself as:
-
 ```sh
 $ gem install app_store_connect_jwt
 ```
