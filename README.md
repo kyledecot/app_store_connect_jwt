@@ -13,6 +13,8 @@ Encode & decode App Store Connect API JWTs
 
 ## Installation
 
+### Bundler 
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -23,13 +25,22 @@ gem 'app_store_connect_jwt',
 And then execute:
 
 ```sh
-bundle
+$ bundle
 ```
+
+### RubyGems
 
 Or install it yourself as:
 
 ```sh
-gem install app_store_connect_jwt
+$ gem install app_store_connect_jwt
+```
+
+### Homebrew
+
+```
+$ brew tap kyledecot/tap
+$ brew install app_store_connect_jwt
 ```
 
 ## Usage
